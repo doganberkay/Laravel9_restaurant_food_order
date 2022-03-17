@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('home.index');
+});
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::redirect('/anasayfa', '/home');
+
+Route::get('/home', [HomeController::class, 'index'])->name('Home');
+Route::get('/about', [HomeController::class, 'about'])->name('About');
+Route::get('/contact', [HomeController::class, 'contact'])->name('Contact');
+Route::get('/shop', [HomeController::class, 'shop'])->name('Shop');
+
+//admin
+Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('Admin Panel');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
