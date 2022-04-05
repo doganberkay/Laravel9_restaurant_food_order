@@ -1,5 +1,7 @@
 @extends('layouts.home')
 
+@section('title','Laravel9 restaurant about page')
+
 @section('content')
 
     <!-- breadcrumb-section -->

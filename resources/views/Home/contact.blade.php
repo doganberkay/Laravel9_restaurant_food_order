@@ -1,5 +1,6 @@
 @extends('layouts.home')
 
+@section('title','Laravel9 restaurant contact page')
 @section('content')
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">

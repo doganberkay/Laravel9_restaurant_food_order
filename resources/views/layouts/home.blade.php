@@ -38,12 +38,10 @@
 <body>
     @include('Home._header')
 
+
     @section('content')
         içerik bura
         @show
-
-
-
 
 
 @include('home._footer')
