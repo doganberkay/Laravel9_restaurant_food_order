@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -29,10 +30,19 @@ Route::get('/about', [HomeController::class, 'about'])->name('About');
 Route::get('/contact', [HomeController::class, 'contact'])->name('Contact');
 Route::get('/shop', [HomeController::class, 'shop'])->name('Shop');
 
-//admin
-Route::get('/admin', [AdminHomeController::class, 'index'])->name('Admin Panel');
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+/*-------------------------------------------------------------------------
+| Admin Routes
+|-------------------------------------------------------------------------- */
+Route::get('/admin', [AdminHomeController::class, 'index'])->name('Admin Panel');
+// CATEGORY ROUTE
+Route::get('/admin/category', [CategoryController::class, 'categorylist'])->name('Admincategory');
+Route::get('/admin/category/create', [CategoryController::class, 'create'])->name('Admin_category_create');
+
+Route::get('/admintest', [CategoryController::class, 'categorylist'])->name('admintest');
+
