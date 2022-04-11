@@ -41,8 +41,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 |-------------------------------------------------------------------------- */
 Route::get('/admin', [AdminHomeController::class, 'index'])->name('Admin Panel');
 // CATEGORY ROUTE
-Route::get('/admin/category', [CategoryController::class, 'categorylist'])->name('Admincategory');
+Route::get('/admin/category', [CategoryController::class, 'index'])->name('Admin_category');
 Route::get('/admin/category/create', [CategoryController::class, 'create'])->name('Admin_category_create');
-
-Route::get('/admintest', [CategoryController::class, 'categorylist'])->name('admintest');
-
+Route::post('/admin/category/store', [CategoryController::class, 'store'])->name('Admin_category_store');
