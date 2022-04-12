@@ -42,9 +42,9 @@
                                 <th scope="col">Description</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Status</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
+                                <th scope="col">Detail</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
                             </tr>
                             </thead>
                             <tbody>

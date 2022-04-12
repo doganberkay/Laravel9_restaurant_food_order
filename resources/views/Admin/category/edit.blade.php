@@ -14,7 +14,8 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item"><a href="/admin/category">Categories</a></li>
+                <li class="breadcrumb-item active">Edit Category</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -25,7 +26,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Horizontal Form</h5>
+                        <h5 class="card-title">Edit Category: {{$data->title}}</h5>
 
                         <!-- Horizontal Form -->
                         <form method="post" action="/admin/category/update/{{$data->id}}" >
