@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Create Category')
+@section('title','Edit Category: '.$data->title )
 @section('description')
     You can order food without a waitress
 @endsection
@@ -10,12 +10,11 @@
 
 
     <div class="pagetitle">
-        <h1>Create Category</h1>
+        <h1>Edit Category: {{$data->title}}</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                <li class="breadcrumb-item"><a href="/admin/category">Categories</a></li>
-                <li class="breadcrumb-item active">Create Category</li>
+                <li class="breadcrumb-item active">Dashboard</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -29,25 +28,25 @@
                         <h5 class="card-title">Horizontal Form</h5>
 
                         <!-- Horizontal Form -->
-                        <form method="post" action="/admin/category/store" >
+                        <form method="post" action="/admin/category/update/{{$data->id}}" >
 
                             @csrf
                             <div class="row mb-3">
                                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="title" class="form-control" id="title" placeholder="Title" required>
+                                    <input type="text" name="title" value="{{$data->title}}" class="form-control" id="title" placeholder="Title" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="keywords" class="col-sm-2 col-form-label">Keywords</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="keywords" class="form-control" placeholder="Keywords">
+                                    <input type="text" name="keywords" value="{{$data->keywords}}" class="form-control" placeholder="Keywords">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="description" class="col-sm-2 col-form-label">Description</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="description" class="form-control" placeholder="Description">
+                                    <input type="text" name="description" value="{{$data->description}}" class="form-control" placeholder="Description">
                                 </div>
                             </div>
 
@@ -61,7 +60,8 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Status</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" name="status" aria-label="Default select example">
+                                    <select class="form-select" name="status" value="{{$data->status}}" aria-label="Default select example">
+                                        <option selected>{{$data->status}}</option>
                                         <option value="1">True</option>
                                         <option value="0">False</option>
                                     </select>
@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
                         </form><!-- End Horizontal Form -->

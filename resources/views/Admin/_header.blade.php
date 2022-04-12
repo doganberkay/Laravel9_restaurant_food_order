@@ -222,7 +222,7 @@
                 </ul><!-- End Profile Dropdown Items -->
             </li><!-- End Profile Nav -->
 
-        </ul>e
+        </ul>
     </nav><!-- End Icons Navigation -->
 
 </header><!-- End Header -->
