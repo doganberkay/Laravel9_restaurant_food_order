@@ -95,11 +95,11 @@
                 <div class="card">
                     @if(is_null($data->image))
                         <div class="img-container" style="position:relative; padding-top:66.59%;">
-                            <img src="/assets/admin/img/default.jpg" style="position: absolute; top: 0; left: 0; width:100%;" >
+                            <img src="/assets/admin/img/default.jpg" style="position: absolute; top: 0; left: 0; width:100%; height:100%; object-fit: cover;object-position: 50% 0%;" >
                         </div>
                     @else
                         <div class="img-container" style="position:relative; padding-top:66.59%;">
-                            <img src="{{Storage::url($data->image)}}" style="position: absolute; top: 0; left: 0; width:100%;" >
+                            <img src="{{Storage::url($data->image)}}" style="position: absolute; top: 0; left: 0; width:100%; height:100%; object-fit: cover;object-position: 50% 0%;" >
                         </div>
                     @endif
                     <div class="card-body">

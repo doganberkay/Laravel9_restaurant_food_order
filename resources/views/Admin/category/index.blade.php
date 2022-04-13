@@ -55,11 +55,11 @@
                                 <td>
                                     @if(is_null($rs->image))
                                         <div class="img-container" style="position:relative; padding-top:66.59%;">
-                                            <img src="/assets/admin/img/default.jpg" style="position: absolute; top: 0; left: 0; width:100%;" >
+                                            <img src="/assets/admin/img/default.jpg" style="position: absolute; top: 0; left: 0; width:100%; height:100%; object-fit: cover;object-position: 50% 0%;" >
                                         </div>
                                     @else
                                         <div class="img-container" style="position:relative; padding-top:66.59%;">
-                                            <img src="{{Storage::url($rs->image)}}" style="position: absolute; top: 0; left: 0; width:100%;" >
+                                            <img src="{{Storage::url($rs->image)}}" style="position: absolute; top: 0; left: 0; width:100%; height:100%; object-fit: cover;object-position: 50% 0%;" >
                                         </div>
                                     @endif
 
@@ -82,7 +82,9 @@
             <div class="col-lg-2">
 
                 <div class="card">
-                    <img src="/storage/cool.jpg" class="card-img-top" alt="...">
+                    <div>
+                        <img src="/storage/cool.jpg" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">This is the list of the categories</h5>
                         <p class="card-text">You can use this page to create a sub or main categories for your needs!</p>
