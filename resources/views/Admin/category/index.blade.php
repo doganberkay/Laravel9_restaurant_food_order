@@ -13,7 +13,7 @@
         <h1>Category List</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
                 <li class="breadcrumb-item active">Categories</li>
             </ol>
         </nav>
@@ -24,7 +24,7 @@
             <div class="col-lg-8">
 
                 <div class="card">
-                    <a href="/admin/category/create" class="btn btn-primary" >Add new category</a>
+                    <a href="{{route('admin.category.create')}}" class="btn btn-primary" >Add new category</a>
                 </div>
 
 
@@ -54,11 +54,22 @@
                                 <td>{{$rs->title}}</td>
                                 <td>{{$rs->keywords}}</td>
                                 <td>{{$rs->description}}</td>
-                                <td>{{$rs->image}}</td>
+                                <td>
+                                    @if(is_null($rs->image))
+                                        <div class="img-container" style="position:relative; padding-top:66.59%;">
+                                            <img src="/assets/admin/img/default.jpg" style="position: absolute; top: 0; left: 0; width:100%;" >
+                                        </div>
+                                    @else
+                                        <div class="img-container" style="position:relative; padding-top:66.59%;">
+                                            <img src="{{Storage::url($rs->image)}}" style="position: absolute; top: 0; left: 0; width:100%;" >
+                                        </div>
+                                    @endif
+
+                                </td>
                                 <td>{{$rs->status ? 'True' : 'False'}}</td>
-                                <td><a href="/admin/category/show/{{$rs->id}}" class="btn btn-outline-info">Show</a> </td>
-                                <td><a href="/admin/category/edit/{{$rs->id}}" class="btn btn-outline-primary" >Edit</a></td>
-                                <td><a href="/admin/category/delete/{{$rs->id}}" class="btn btn-outline-danger">Delete</a> </td>
+                                <td><a href=" {{route('admin.category.show', ['id'=>$rs->id])}} " class="btn btn-outline-info">Show</a> </td>
+                                <td><a href="{{route('admin.category.edit', ['id'=>$rs->id])}}" class="btn btn-outline-primary" >Edit</a></td>
+                                <td><a href="{{route('admin.category.delete', ['id'=>$rs->id])}}" class="btn btn-outline-danger" onclick="return confirm('You are deleting category! Are you sure?')">Delete</a> </td>
                             </tr>
                             @endforeach
                             </tbody>

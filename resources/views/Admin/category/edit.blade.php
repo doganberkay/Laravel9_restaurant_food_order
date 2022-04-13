@@ -13,8 +13,8 @@
         <h1>Edit Category: {{$data->title}}</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                <li class="breadcrumb-item"><a href="/admin/category">Categories</a></li>
+                <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('admin.category.index')}}">Categories</a></li>
                 <li class="breadcrumb-item active">Edit Category</li>
             </ol>
         </nav>
@@ -29,7 +29,7 @@
                         <h5 class="card-title">Edit Category: {{$data->title}}</h5>
 
                         <!-- Horizontal Form -->
-                        <form method="post" action="/admin/category/update/{{$data->id}}" >
+                        <form method="post" action="{{route('admin.category.update' ,['id'=>$data->id])}}" enctype="multipart/form-data" >
 
                             @csrf
                             <div class="row mb-3">
@@ -54,7 +54,7 @@
                             <div class="row mb-3">
                                 <label for="inputNumber" class="col-sm-2 col-form-label">Image Upload</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="file" id="formFile">
+                                    <input class="form-control" type="file" name="image" id="formFile">
                                 </div>
                             </div>
 

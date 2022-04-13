@@ -13,8 +13,8 @@
         <h1>Show Category: {{$data->title}}</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                <li class="breadcrumb-item"><a href="/admin/category">Categories</a></li>
+                <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('admin.category.index')}}">Categories</a></li>
                 <li class="breadcrumb-item active">Category Detail</li>
             </ol>
         </nav>
@@ -88,9 +88,9 @@
 
             <div class="col-lg-4">
                 <div class="card">
-                    <img src="/assets/admin/img/card.jpg" class="card-img-top" alt="...">
+                    <img src="{{Storage::url($data->image)}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">You can create a category here</h5>
+                        <h5 class="card-title">Image of your category!</h5>
                         <p class="card-text">You can use this page to create a food category for your restaurant such as burgers or salads.</p>
                     </div>
                 </div>
