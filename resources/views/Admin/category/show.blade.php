@@ -68,7 +68,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">Status</th>
-                                <td>{{$data->status? 'True': 'False'}}</td>
+                                <td>{{$data->status}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Creation Date</th>

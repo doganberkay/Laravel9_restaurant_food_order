@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Show Category: '.$data->title )
+@section('title','Show Product: '.$data->title )
 @section('description')
     You can order food without a waitress
 @endsection
@@ -10,12 +10,12 @@
 
 
     <div class="pagetitle">
-        <h1>Show Category: {{$data->title}}</h1>
+        <h1>Show Product: {{$data->title}}</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('admin.category.index')}}">Categories</a></li>
-                <li class="breadcrumb-item active">Category Detail</li>
+                <li class="breadcrumb-item"><a href="{{route('admin.product.index')}}">Product</a></li>
+                <li class="breadcrumb-item active">Product Detail</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card">
-                            <a href="/admin/category/edit/{{$data->id}}" class="btn btn-primary" >Edit Category</a>
+                            <a href="/admin/category/edit/{{$data->id}}" class="btn btn-primary" >Edit Product</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -39,7 +39,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Detailed Information of Category: <b>{{$data->title}}</b> </h5>
+                        <h5 class="card-title">Detailed Information of Product: <b>{{$data->title}}</b> </h5>
 
                         <!-- Default Table -->
                         <table class="table table-striped table-hover ">
@@ -55,6 +55,12 @@
                                 <td>{{$data->id}}</td>
                             </tr>
                             <tr>
+                                <th scope="row">Category Id</th>
+                                <td>
+                                    {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($data->category, $data->category->title)}}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">Title</th>
                                 <td>{{$data->title}}</td>
                             </tr>
@@ -67,8 +73,28 @@
                                 <td>{{$data->description}}</td>
                             </tr>
                             <tr>
+                                <th scope="row">Price</th>
+                                <td>{{$data->price}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">quantity</th>
+                                <td>{{$data->quantity}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Minimum Quantity</th>
+                                <td>{{$data->min_quantity}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Tax</th>
+                                <td>{{$data->tax}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Details</th>
+                                <td>{{$data->detail}}</td>
+                            </tr>
+                            <tr>
                                 <th scope="row">Status</th>
-                                <td>{{$data->status? 'True': 'False'}}</td>
+                                <td>{{$data->status}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Creation Date</th>

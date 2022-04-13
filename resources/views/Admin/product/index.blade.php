@@ -43,6 +43,7 @@
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Show</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
@@ -51,7 +52,7 @@
                             @foreach( $data as $rs)
                             <tr>
                                 <th scope="row">{{$rs->id}}</th>
-                                <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</td>
+                                <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title)}}</td>
                                 <td>{{$rs->title}}</td>
                                 <td>{{$rs->price}}</td>
                                 <td>{{$rs->quantity}}</td>
@@ -67,8 +68,8 @@
                                     @endif
 
                                 </td>
-                                <td>{{$rs->status ? 'True' : 'False'}}</td>
-                                <td><a href=" {{route('admin.product.show', ['id'=>$rs->id])}} " class="btn btn-outline-info">Show</a> </td>
+                                <td>{{$rs->status}}</td>
+                                <td><a href="{{route('admin.product.show', ['id'=>$rs->id])}} " class="btn btn-outline-info">Show</a> </td>
                                 <td><a href="{{route('admin.product.edit', ['id'=>$rs->id])}}" class="btn btn-outline-primary" >Edit</a></td>
                                 <td><a href="{{route('admin.product.delete', ['id'=>$rs->id])}}" class="btn btn-outline-danger" onclick="return confirm('You are deleting product! Are you sure?')">Delete</a> </td>
                             </tr>

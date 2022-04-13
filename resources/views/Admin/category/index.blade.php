@@ -64,7 +64,7 @@
                                     @endif
 
                                 </td>
-                                <td>{{$rs->status ? 'True' : 'False'}}</td>
+                                <td>{{$rs->status}}</td>
                                 <td><a href=" {{route('admin.category.show', ['id'=>$rs->id])}} " class="btn btn-outline-info">Show</a> </td>
                                 <td><a href="{{route('admin.category.edit', ['id'=>$rs->id])}}" class="btn btn-outline-primary" >Edit</a></td>
                                 <td><a href="{{route('admin.category.delete', ['id'=>$rs->id])}}" class="btn btn-outline-danger" onclick="return confirm('You are deleting category! Are you sure?')">Delete</a> </td>

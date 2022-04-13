@@ -14,7 +14,7 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('admin.product.index')}}">Categories</a></li>
+                <li class="breadcrumb-item"><a href="{{route('admin.product.index')}}">Product</a></li>
                 <li class="breadcrumb-item active">Edit Product</li>
             </ol>
         </nav>
@@ -41,11 +41,10 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Parent Product</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" name="parent_id" aria-label="Default select example">
-                                        <option value="0" selected="selected">Main Product</option>
+                                    <select class="form-select" name="category_id" aria-label="Default select example">
                                         @foreach($datalist as $rs)
                                             <option value="{{ $rs->id }}" @if($rs->id == $data->parent_id) selected="selected" @endif>
-                                                {{\App\Http\Controllers\Admin\ProductController::getParentsTree($rs, $rs->title)}}</option>
+                                                {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -74,9 +73,8 @@
                                 <label class="col-sm-2 col-form-label">Status</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" name="status" value="{{$data->status}}" aria-label="Default select example">
-                                        <option selected>{{$data->status}}</option>
-                                        <option value="1">True</option>
-                                        <option value="0">False</option>
+                                        <option value="True" @if($data->status == "True") selected="selected" @endif>True</option>
+                                        <option value="False"@if($data->status == "False") selected="selected" @endif>False</option>
                                     </select>
                                 </div>
                             </div>

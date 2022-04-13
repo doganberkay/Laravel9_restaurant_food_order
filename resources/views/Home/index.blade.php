@@ -7,7 +7,6 @@
 @section('keywords','food,order,order food')
 
 @section('content')
-ü,,
     @include('Home._slider')
     <!-- features list section -->
     <div class="list-section pt-80 pb-80">

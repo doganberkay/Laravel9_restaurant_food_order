@@ -74,8 +74,8 @@
                                 <label class="col-sm-2 col-form-label">Status</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" name="status" aria-label="Default select example">
-                                        <option value="1">True</option>
-                                        <option value="0">False</option>
+                                        <option value="True">True</option>
+                                        <option value="False">False</option>
                                     </select>
                                 </div>
                             </div>

@@ -74,9 +74,8 @@
                                 <label class="col-sm-2 col-form-label">Status</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" name="status" value="{{$data->status}}" aria-label="Default select example">
-                                        <option selected>{{$data->status}}</option>
-                                        <option value="1">True</option>
-                                        <option value="0">False</option>
+                                        <option value="True" @if($data->status == "True") selected="selected" @endif>True</option>
+                                        <option value="False"@if($data->status == "False") selected="selected" @endif>False</option>
                                     </select>
                                 </div>
                             </div>
