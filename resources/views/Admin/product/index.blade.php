@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Category')
+@section('title','Product')
 @section('description')
     You can order food without a waitress
 @endsection
@@ -10,11 +10,11 @@
 
 
     <div class="pagetitle">
-        <h1>Category List</h1>
+        <h1>Product List</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                <li class="breadcrumb-item active">Categories</li>
+                <li class="breadcrumb-item active">Products</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -24,24 +24,25 @@
             <div class="col-lg-10">
 
                 <div class="card">
-                    <a href="{{route('admin.category.create')}}" class="btn btn-primary" >Add new category</a>
+                    <a href="{{route('admin.product.create')}}" class="btn btn-primary" >Add new product</a>
                 </div>
 
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Category Table</h5>
+                        <h5 class="card-title">Product Table</h5>
 
                         <!-- Table with hoverable rows -->
                         <table class="table table-hover ">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Parent</th>
+                                <th scope="col">Category</th>
                                 <th scope="col">Title</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Detail</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
@@ -52,6 +53,8 @@
                                 <th scope="row">{{$rs->id}}</th>
                                 <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</td>
                                 <td>{{$rs->title}}</td>
+                                <td>{{$rs->price}}</td>
+                                <td>{{$rs->quantity}}</td>
                                 <td>
                                     @if(is_null($rs->image))
                                         <div class="img-container" style="position:relative; padding-top:66.59%;">
@@ -65,9 +68,9 @@
 
                                 </td>
                                 <td>{{$rs->status ? 'True' : 'False'}}</td>
-                                <td><a href=" {{route('admin.category.show', ['id'=>$rs->id])}} " class="btn btn-outline-info">Show</a> </td>
-                                <td><a href="{{route('admin.category.edit', ['id'=>$rs->id])}}" class="btn btn-outline-primary" >Edit</a></td>
-                                <td><a href="{{route('admin.category.delete', ['id'=>$rs->id])}}" class="btn btn-outline-danger" onclick="return confirm('You are deleting category! Are you sure?')">Delete</a> </td>
+                                <td><a href=" {{route('admin.product.show', ['id'=>$rs->id])}} " class="btn btn-outline-info">Show</a> </td>
+                                <td><a href="{{route('admin.product.edit', ['id'=>$rs->id])}}" class="btn btn-outline-primary" >Edit</a></td>
+                                <td><a href="{{route('admin.product.delete', ['id'=>$rs->id])}}" class="btn btn-outline-danger" onclick="return confirm('You are deleting product! Are you sure?')">Delete</a> </td>
                             </tr>
                             @endforeach
                             </tbody>

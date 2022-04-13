@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\HomeController;
@@ -41,8 +41,20 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 |-------------------------------------------------------------------------- */
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('index');
-    // CATEGORY ROUTE
+
+    // ************* ADMIN CATEGORY ROUTE
     Route::prefix('category')->controller(CategoryController::class)->name('category.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::get('/delete/{id}', 'destroy')->name('delete');
+    });
+
+    // ************ ADMIN PRODUCT ROUTE
+    Route::prefix('product')->controller(ProductController::class)->name('product.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');

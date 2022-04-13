@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Create Category')
+@section('title','Create Product')
 @section('description')
     You can order food without a waitress
 @endsection
@@ -10,12 +10,12 @@
 
 
     <div class="pagetitle">
-        <h1>Create Category</h1>
+        <h1>Create Product</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('admin.category.index')}}">Categories</a></li>
-                <li class="breadcrumb-item active">Create Category</li>
+                <li class="breadcrumb-item"><a href="{{route('admin.product.index')}}">Products</a></li>
+                <li class="breadcrumb-item active">Create Product</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -26,10 +26,10 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">You can create a category</h5>
+                        <h5 class="card-title">You can create a Product</h5>
 
                         <!-- Horizontal Form -->
-                        <form method="post" action="{{route('admin.category.store')}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{route('admin.product.store')}}" enctype="multipart/form-data" >
 
                             @csrf
                             <div class="row mb-3">
@@ -39,10 +39,9 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Parent Category</label>
+                                <label class="col-sm-2 col-form-label">Parent Product</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" name="parent_id" aria-label="Default select example">
-                                        <option value="0" selected="selected">Main Category</option>
+                                    <select class="form-select" name="category_id" aria-label="Default select example">
                                         @foreach($data as $rs)
                                             <option value="{{ $rs->id }}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
                                         @endforeach
@@ -64,11 +63,42 @@
                             </div>
 
                             <div class="row mb-3">
+                                <label for="keywords" class="col-sm-2 col-form-label">Price</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="price" class="form-control" placeholder="Price">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="keywords" class="col-sm-2 col-form-label">Quantity</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="quantity" class="form-control" placeholder="Quantity">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="keywords" class="col-sm-2 col-form-label">Minimum Quantity</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="min_quantity" class="form-control" placeholder="Minimum Quantity">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="keywords" class="col-sm-2 col-form-label">Tax</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="tax" class="form-control" placeholder="Tax">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Details</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="detail" placeholder="Details" style="height: 100px" "></textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
                                 <label for="inputNumber" class="col-sm-2 col-form-label">Image Upload</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="file" name="image" id="formFile">
                                 </div>
                             </div>
+
 
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Status</label>
@@ -86,6 +116,7 @@
                             </div>
                         </form><!-- End Horizontal Form -->
 
+
                     </div>
                 </div>
             </div>
@@ -94,8 +125,8 @@
                 <div class="card">
                     <img src="/assets/admin/img/card.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">You can create a category here</h5>
-                        <p class="card-text">You can use this page to create a food category for your restaurant such as burgers or salads.</p>
+                        <h5 class="card-title">You can create a Product here</h5>
+                        <p class="card-text">You can use this page to create a food Product for your restaurant such as burgers or salads.</p>
                     </div>
                 </div>
 

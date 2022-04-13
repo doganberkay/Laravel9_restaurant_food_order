@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Edit Category: '.$data->title )
+@section('title','Edit Product: '.$data->title )
 @section('description')
     You can order food without a waitress
 @endsection
@@ -10,12 +10,12 @@
 
 
     <div class="pagetitle">
-        <h1>Edit Category: {{$data->title}}</h1>
+        <h1>Edit Product: {{$data->title}}</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('admin.category.index')}}">Categories</a></li>
-                <li class="breadcrumb-item active">Edit Category</li>
+                <li class="breadcrumb-item"><a href="{{route('admin.product.index')}}">Categories</a></li>
+                <li class="breadcrumb-item active">Edit Product</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -26,10 +26,10 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Edit Category: {{$data->title}}</h5>
+                        <h5 class="card-title">Edit Product: {{$data->title}}</h5>
 
                         <!-- Horizontal Form -->
-                        <form method="post" action="{{route('admin.category.update' ,['id'=>$data->id])}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{route('admin.product.update' ,['id'=>$data->id])}}" enctype="multipart/form-data" >
 
                             @csrf
                             <div class="row mb-3">
@@ -39,13 +39,13 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Parent Category</label>
+                                <label class="col-sm-2 col-form-label">Parent Product</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" name="parent_id" aria-label="Default select example">
-                                        <option value="0" selected="selected">Main Category</option>
+                                        <option value="0" selected="selected">Main Product</option>
                                         @foreach($datalist as $rs)
                                             <option value="{{ $rs->id }}" @if($rs->id == $data->parent_id) selected="selected" @endif>
-                                                {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
+                                                {{\App\Http\Controllers\Admin\ProductController::getParentsTree($rs, $rs->title)}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -103,8 +103,8 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <h5 class="card-title">You can create a category here</h5>
-                        <p class="card-text">You can use this page to create a food category for your restaurant such as burgers or salads.</p>
+                        <h5 class="card-title">You can create a Product here</h5>
+                        <p class="card-text">You can use this page to create a food Product for your restaurant such as burgers or salads.</p>
                     </div>
                 </div>
 

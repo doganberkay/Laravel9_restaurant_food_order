@@ -46,7 +46,7 @@
                 <span>Categories</span>
             </a>
         </li><!-- End Blank Page Nav --><li class="nav-item">
-            <a class="nav-link collapsed" href="pages-blank.html">
+            <a class="nav-link collapsed" href="{{route('admin.product.index')}}">
                 <i class="bx bx-food-menu"></i>
                 <span>Products</span>
             </a>
