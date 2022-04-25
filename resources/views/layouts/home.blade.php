@@ -38,6 +38,8 @@
 <body>
     @include('Home._header')
 
+    @section('slider'),
+    @show
 
     @section('content')
         içerik bura

@@ -1,24 +1,29 @@
 @extends('layouts.admin')
 
-@section('title','Edit Product: '.$data->title )
+@section('title','Create Product')
 @section('description')
     You can order food without a waitress
 @endsection
 @section('keywords','food,order,order food')
 
+@section('head')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+@endsection
+
 @section('content')
 
 
     <div class="pagetitle">
-        <h1>Edit Product: {{$data->title}}</h1>
+        <h1>Create Product</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('admin.product.index')}}">Product</a></li>
-                <li class="breadcrumb-item active">Edit Product</li>
+                <li class="breadcrumb-item"><a href="{{route('admin.product.index')}}">Products</a></li>
+                <li class="breadcrumb-item active">Create Product</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
+
 
     <section class="section">
         <div class="row">
@@ -26,16 +31,16 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Edit Product: {{$data->title}}</h5>
+                        <h5 class="card-title">You can create a Product</h5>
 
                         <!-- Horizontal Form -->
-                        <form method="post" action="{{route('admin.product.update' ,['id'=>$data->id])}}" enctype="multipart/form-data" >
+                        <form method="post" action="{{route('admin.product.update',['id'=>$data->id])}}" enctype="multipart/form-data" >
 
                             @csrf
                             <div class="row mb-3">
                                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="title" value="{{$data->title}}" class="form-control" id="title" placeholder="Title" required>
+                                    <input type="text" value="{{$data->title}}"name="title" class="form-control" id="title" placeholder="Title" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -43,12 +48,12 @@
                                 <div class="col-sm-10">
                                     <select class="form-select" name="category_id" aria-label="Default select example">
                                         @foreach($datalist as $rs)
-                                            <option value="{{ $rs->id }}" @if($rs->id == $data->parent_id) selected="selected" @endif>
-                                                {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
+                                            <option value="{{ $rs->id }}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <label for="keywords" class="col-sm-2 col-form-label">Keywords</label>
                                 <div class="col-sm-10">
@@ -63,27 +68,67 @@
                             </div>
 
                             <div class="row mb-3">
+                                <label for="keywords" class="col-sm-2 col-form-label">Price</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="price" value="{{$data->price}}"class="form-control" placeholder="Price">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="keywords" class="col-sm-2 col-form-label">Quantity</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="quantity" value="{{$data->quantity}}" class="form-control" placeholder="Quantity">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="keywords" class="col-sm-2 col-form-label">Minimum Quantity</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="min_quantity" value="{{$data->min_quantity}}" class="form-control" placeholder="Minimum Quantity">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="keywords" class="col-sm-2 col-form-label">Tax</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="tax" value="{{$data->tax}}"class="form-control" placeholder="Tax">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Details</label>
+                                <div class="col-sm-10 " >
+
+                                    <textarea id="detail" name="detail">
+                                        {{$data->detail}}
+                                     </textarea><!-- End TinyMCE Editor -->
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
                                 <label for="inputNumber" class="col-sm-2 col-form-label">Image Upload</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="file" name="image" id="formFile">
                                 </div>
                             </div>
 
+
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Status</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" name="status" value="{{$data->status}}" aria-label="Default select example">
-                                        <option value="True" @if($data->status == "True") selected="selected" @endif>True</option>
-                                        <option value="False"@if($data->status == "False") selected="selected" @endif>False</option>
+                                    <select class="form-select" name="status" aria-label="Default select example">
+                                        <option value="True">True</option>
+                                        <option value="False">False</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
                         </form><!-- End Horizontal Form -->
+
 
                     </div>
                 </div>
@@ -91,15 +136,7 @@
 
             <div class="col-lg-4">
                 <div class="card">
-                    @if(is_null($data->image))
-                        <div class="img-container" style="position:relative; padding-top:66.59%;">
-                            <img src="/assets/admin/img/default.jpg" style="position: absolute; top: 0; left: 0; width:100%;" >
-                        </div>
-                    @else
-                        <div class="img-container" style="position:relative; padding-top:66.59%;">
-                            <img src="{{Storage::url($data->image)}}" style="position: absolute; top: 0; left: 0; width:100%;" >
-                        </div>
-                    @endif
+                    <img src="/assets/admin/img/card.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">You can create a Product here</h5>
                         <p class="card-text">You can use this page to create a food Product for your restaurant such as burgers or salads.</p>
@@ -111,5 +148,17 @@
     </section>
 @endsection
 
+@section('foot')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#detail' ) )
+            .then( editor => {
+                console.log( editor );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+@endsection
 
 

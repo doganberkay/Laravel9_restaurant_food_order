@@ -1,33 +1,15 @@
 <!-- home page slider -->
 <div class="homepage-slider">
     <!-- single home slider -->
-    <div class="single-homepage-slider homepage-bg-1">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-7 offset-lg-1 offset-xl-0">
-                    <div class="hero-text">
-                        <div class="hero-text-tablecell">
-                            <p class="subtitle">Fresh & Organic</p>
-                            <h1>Tatlı yemekler</h1>
-                            <div class="hero-btns">
-                                <a href="shop.html" class="boxed-btn">Fruit Collection</a>
-                                <a href="contact.html" class="bordered-btn">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- single home slider -->
-    <div class="single-homepage-slider homepage-bg-2">
+    @foreach($sliderdata as $rs)
+    <div class="single-homepage-slider" style="background-image: url({{Storage::url($rs->image)}});" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1 text-center">
                     <div class="hero-text">
                         <div class="hero-text-tablecell">
                             <p class="subtitle">Fresh Everyday</p>
-                            <h1>100% </h1>
+                            <h1>{{$rs->title}}</h1>
                             <div class="hero-btns">
                                 <a href="shop.html" class="boxed-btn">Visit Shop</a>
                                 <a href="contact.html" class="bordered-btn">Contact Us</a>
@@ -38,6 +20,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- single home slider -->
     <div class="single-homepage-slider homepage-bg-3">
         <div class="container">

@@ -1,6 +1,6 @@
-@extends('layouts.admin')
+@extends('layouts.adminwindow')
 
-@section('title','Category')
+@section('title','Image')
 @section('description')
     You can order food without a waitress
 @endsection
@@ -10,52 +10,66 @@
 
 
     <div class="pagetitle">
-        <h1>Category List</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                <li class="breadcrumb-item active">Categories</li>
-            </ol>
-        </nav>
+        <h1>Image Gallery of: {{$product->title}} </h1>
     </div><!-- End Page Title -->
 
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
 
+
                 <div class="card">
-                    <a href="{{route('admin.category.create')}}" class="btn btn-primary" >Add new category</a>
+                    <div class="card-body">
+                    <br>
+                    <form  action="{{route('admin.image.store' ,['pid'=>$product->id])}}" method="post" enctype="multipart/form-data" >
+
+                        @csrf
+                        <div class="row mb-3">
+                            <label for="title" class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="title" class="form-control" id="title" placeholder="Title" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="inputNumber" class="col-sm-2 col-form-label">Image Upload</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="file" name="image" id="formFile" required>
+                            </div>
+                        </div>
+                        <br>
+                            <div class="card">
+                                <button type="submit" class="btn btn-primary">Add new image</button>
+                            </div>
+
+                    </form><!-- End Horizontal Form -->
+                    </div>
                 </div>
 
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Category Table</h5>
+                        <h5 class="card-title">Images Table</h5>
 
                         <!-- Table with hoverable rows -->
                         <table class="table table-hover ">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Parent</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Thumbnail</th>
-                                <th style="text-align: center;" scope="col">Status</th>
-                                <th style="text-align: center;" scope="col">Detail</th>
-                                <th style="text-align: center;" scope="col">Edit</th>
+                                <th style="text-align: center;"  scope="col">Thumbnail</th>
                                 <th style="text-align: center;" scope="col">Delete</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach( $data as $rs)
+                            @foreach( $images as $rs)
                             <tr >
                                 <th scope="row">{{$rs->id}}</th>
-                                <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)}}</td>
                                 <td>{{$rs->title}}</td>
                                 <td>
                                     @if(is_null($rs->image))
                                         <div class="img-container" style="position:relative; padding-top:66.59%;">
-                                            <img src="/assets/admin/img/default.jpg" style="position: absolute; top: 0; left: 0; width:100%; height:100%; object-fit: cover;object-position: 50% 0%;" >
+                                            <img src="/assets/admin/img/default.jpg" style="position: absolute; top: 0; left: 0; width:50%; height:50%; object-fit: cover;object-position: 50% 0%;" >
                                         </div>
                                     @else
                                         <div class="img-container" style="position:relative; padding-top:66.59%;">
@@ -64,10 +78,7 @@
                                     @endif
 
                                 </td>
-                                <td style="text-align: center;">{{$rs->status}}</td>
-                                <td style="text-align: center;"><a href=" {{route('admin.category.show', ['id'=>$rs->id])}} " class="btn btn-outline-info"><i class="bi bi-info-circle"></i> Show</a> </td>
-                                <td style="text-align: center;"><a href="{{route('admin.category.edit', ['id'=>$rs->id])}}" class="btn btn-outline-primary" ><i class="bi bi-pencil"></i> Edit</a></td>
-                                <td style="text-align: center;"><a href="{{route('admin.category.delete', ['id'=>$rs->id])}}" class="btn btn-outline-danger " onclick="return confirm('You are deleting category! Are you sure?')"><i class="bi bi-trash"></i> Delete</a> </td>
+                                <td style="text-align: center;"><a href="{{route('admin.image.delete', ['pid'=>$product->id,'id'=>$rs->id])}}" class="btn btn-outline-danger " onclick="return confirm('You are deleting category! Are you sure?')"><i class="bi bi-trash"></i> Delete</a> </td>
                             </tr>
                             @endforeach
                             </tbody>
@@ -76,13 +87,6 @@
 
                     </div>
                 </div>
-
-            </div>
-
-            <div class="col-lg-2">
-
-
-
 
             </div>
         </div>

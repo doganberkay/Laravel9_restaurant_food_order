@@ -35,19 +35,14 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-    @yield('head')
 </head>
 <body>
-
-@include('Admin._header')
-@include('Admin._sidebar')
-<main id="main" class="main">
+<main id="mainwindow" class="main">
 @section('content')
 @show
 </main><!-- End #main -->
 
 @include('Admin._footer')
-@yield('foot')
 
 </body>
 </html>

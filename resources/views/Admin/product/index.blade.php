@@ -21,7 +21,7 @@
 
     <section class="section">
         <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-12">
 
                 <div class="card">
                     <a href="{{route('admin.product.create')}}" class="btn btn-primary" >Add new product</a>
@@ -33,24 +33,25 @@
                         <h5 class="card-title">Product Table</h5>
 
                         <!-- Table with hoverable rows -->
-                        <table class="table table-hover ">
+                        <table class="table table-hover">
                             <thead>
-                            <tr>
+                            <tr >
                                 <th scope="col">#</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Show</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Delete</th>
+                                <th scope="col">Thumbnail</th>
+                                <th style="text-align: center;" scope="col">Images</th>
+                                <th style="text-align: center;" scope="col">Status</th>
+                                <th style="text-align: center;" scope="col">Detail</th>
+                                <th style="text-align: center;" scope="col">Edit</th>
+                                <th style="text-align: center;" cope="col">Delete</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach( $data as $rs)
-                            <tr>
+                            <tr >
                                 <th scope="row">{{$rs->id}}</th>
                                 <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category, $rs->category->title)}}</td>
                                 <td>{{$rs->title}}</td>
@@ -59,19 +60,19 @@
                                 <td>
                                     @if(is_null($rs->image))
                                         <div class="img-container" style="position:relative; padding-top:66.59%;">
-                                            <img src="/assets/admin/img/default.jpg" style="position: absolute; top: 0; left: 0; width:100%;" >
+                                            <img src="/assets/admin/img/default.jpg" style="position: absolute; top: 0; left: 0; width:100%; height:100%; object-fit: cover;object-position: 50% 0%;" >
                                         </div>
                                     @else
                                         <div class="img-container" style="position:relative; padding-top:66.59%;">
-                                            <img src="{{Storage::url($rs->image)}}" style="position: absolute; top: 0; left: 0; width:100%;" >
+                                            <img src="{{Storage::url($rs->image)}}" style="position: absolute; top: 0; left: 0; width:100%; height:100%; object-fit: cover;object-position: 50% 0%;" >
                                         </div>
                                     @endif
-
                                 </td>
-                                <td>{{$rs->status}}</td>
-                                <td><a href="{{route('admin.product.show', ['id'=>$rs->id])}} " class="btn btn-outline-info">Show</a> </td>
-                                <td><a href="{{route('admin.product.edit', ['id'=>$rs->id])}}" class="btn btn-outline-primary" >Edit</a></td>
-                                <td><a href="{{route('admin.product.delete', ['id'=>$rs->id])}}" class="btn btn-outline-danger" onclick="return confirm('You are deleting product! Are you sure?')">Delete</a> </td>
+                                <td style="text-align: center;"><a onclick="return !window.open(this.href, '','top=50 left=100 width=1100, height=700')" href="{{route('admin.image.index', ['pid'=>$rs->id])}} " class="btn btn-outline-secondary"><i class="bi bi-card-image"></i> Images</a></td>
+                                <td style="text-align: center;">{{$rs->status}}</td>
+                                <td style="text-align: center;"><a href="{{route('admin.product.show', ['id'=>$rs->id])}} " class="btn btn-outline-info"><i class="bi bi-info-circle"></i> Show</a></td>
+                                <td style="text-align: center;"><a href="{{route('admin.product.edit', ['id'=>$rs->id])}}" class="btn btn-outline-primary" ><i class="bi bi-pencil"></i> Edit</a></td>
+                                <td style="text-align: center;"><a href="{{route('admin.product.delete', ['id'=>$rs->id])}}" class="btn btn-outline-danger" onclick="return confirm('You are deleting product! Are you sure?')"><i class="bi bi-trash"></i> Delete</a> </td>
                             </tr>
                             @endforeach
                             </tbody>
@@ -85,13 +86,7 @@
 
             <div class="col-lg-2">
 
-                <div class="card">
-                    <img src="/storage/cool.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">This is the list of the categories</h5>
-                        <p class="card-text">You can use this page to create a sub or main categories for your needs!</p>
-                    </div>
-                </div>
+
 
 
             </div>

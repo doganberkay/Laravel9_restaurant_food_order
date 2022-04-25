@@ -20,6 +20,13 @@
         </nav>
     </div><!-- End Page Title -->
 
+    <div class="row mb-3">
+        <label for="inputNumber" class="col-sm-2 col-form-label">Image Upload</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="file" name="image" id="formFile">
+        </div>
+    </div>
+
     <section class="section">
         <div class="row">
             <div class="col-lg-8">
@@ -97,7 +104,6 @@
                                 <img src="{{Storage::url($data->image)}}" style="position: absolute; top: 0; left: 0; width:100%; height:100%; object-fit: cover;object-position: 50% 0%;" >
                             </div>
                         @endif
-
 
                     <div class="card-body">
                         <h5 class="card-title">Image of your category!</h5>

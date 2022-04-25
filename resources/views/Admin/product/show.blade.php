@@ -26,12 +26,12 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card">
-                            <a href="/admin/category/edit/{{$data->id}}" class="btn btn-primary" >Edit Product</a>
+                            <a href="/admin/product/edit/{{$data->id}}" class="btn btn-primary" >Edit Product</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="card">
-                            <a href="/admin/category/delete/{{$data->id}}" onclick="return confirm('You are deleting {{$data->title}} category! Are you sure?')" class="btn btn-danger" >Delete Category</a>
+                            <a href="/admin/product/delete/{{$data->id}}" onclick="return confirm('You are deleting {{$data->title}} category! Are you sure?')" class="btn btn-danger" >Delete Category</a>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">Details</th>
-                                <td>{{$data->detail}}</td>
+                                <td>{!! $data->detail !!}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Status</th>

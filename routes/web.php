@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
@@ -15,13 +17,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home.index');
-});
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('/', [HomeController::class, 'index'])->name('Home');
 
 Route::redirect('/anasayfa', '/home');
 
@@ -45,6 +45,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // ************* ADMIN CATEGORY ROUTE
     Route::prefix('category')->controller(CategoryController::class)->name('category.')->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/index2', 'index2')->name('index2');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
         Route::get('/edit/{id}', 'edit')->name('edit');
@@ -62,5 +63,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/update/{id}','update')->name('update');
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/delete/{id}', 'destroy')->name('delete');
+    });
+
+    // ************ ADMIN PRODUCT IMAGE ROUTE
+    Route::prefix('image')->controller(ImageController::class)->name('image.')->group(function () {
+        Route::get('/{pid}', 'index')->name('index');
+        Route::get('/create/{pid}', 'create')->name('create');
+        Route::post('/store/{pid}', 'store')->name('store');
+        Route::post('/update/{pid}/{id}','update')->name('update');
+        Route::get('/delete/{pid}/{id}', 'destroy')->name('delete');
     });
 });
