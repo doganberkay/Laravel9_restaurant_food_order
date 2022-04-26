@@ -3,7 +3,6 @@
 @section('title','Laravel9 restaurant about page')
 
 @section('content')
-
     <!-- breadcrumb-section -->
     <div class="breadcrumb-section breadcrumb-bg">
         <div class="container">

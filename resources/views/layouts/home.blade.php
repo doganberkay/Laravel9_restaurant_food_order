@@ -38,14 +38,15 @@
 <body>
     @include('Home._header')
 
-    @section('slider'),
+    @section('slider')
     @show
 
     @section('content')
-        içerik bura
+
         @show
 
 
-@include('home._footer')
+    @include('home._footer')
+    @yield('foot')
 </body >
 </html>

@@ -17,6 +17,16 @@ class HomeController extends Controller
         ]);
     }
 
+    public function product($id){
+
+
+        $data = Product::find($id);
+        return view('home.product',[
+            'data'=>$data
+        ]);
+    }
+
+
     public function about(){
         return view('home.about');
     }

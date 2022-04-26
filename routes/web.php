@@ -36,6 +36,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
+
+Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
+
+
+
 /*-------------------------------------------------------------------------
 | Admin Routes
 |-------------------------------------------------------------------------- */
