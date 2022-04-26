@@ -54,7 +54,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/delete/{id}', 'destroy')->name('delete');
     });
 
-    // ************ ADMIN PRODUCT ROUTE
+    // ************ ADMIN PRODUCT ROUTEaaaaa
     Route::prefix('product')->controller(ProductController::class)->name('product.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
