@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,10 @@ class HomeController extends Controller
 
 
         $data = Product::find($id);
+        $images = DB::table('images')->where('product_id', $id)->get();
         return view('home.product',[
-            'data'=>$data
+            'data'=>$data,
+            'images'=>$images
         ]);
     }
 
