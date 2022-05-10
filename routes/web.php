@@ -48,7 +48,11 @@ Route::get('/shop/{id}/{slug}', [HomeController::class, 'categoryproducts'])->na
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('index');
 
-    // ************* ADMIN CATEGORY ROUTE
+    // ************* ADMIN GENERAL ROUTES
+    Route::get('/settings', [AdminHomeController::class, 'setting'])->name('setting');
+    Route::post('/settings', [AdminHomeController::class, 'settingUpdate'])->name('setting.update');
+
+    // ************* ADMIN CATEGORY ROUTES
     Route::prefix('category')->controller(CategoryController::class)->name('category.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
@@ -59,7 +63,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/delete/{id}', 'destroy')->name('delete');
     });
 
-    // ************ ADMIN PRODUCT ROUTEaaaaa
+    // ************ ADMIN PRODUCT ROUTES
     Route::prefix('product')->controller(ProductController::class)->name('product.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
@@ -70,7 +74,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/delete/{id}', 'destroy')->name('delete');
     });
 
-    // ************ ADMIN PRODUCT IMAGE ROUTE
+    // ************ ADMIN PRODUCT IMAGE ROUTES
     Route::prefix('image')->controller(ImageController::class)->name('image.')->group(function () {
         Route::get('/{pid}', 'index')->name('index');
         Route::get('/create/{pid}', 'create')->name('create');

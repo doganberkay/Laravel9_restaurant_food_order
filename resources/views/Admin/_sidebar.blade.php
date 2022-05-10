@@ -79,7 +79,7 @@
         </li><!-- End Blank Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="users-profile.html">
+            <a class="nav-link collapsed" href="{{route('admin.setting')}}">
                 <i class="bi bi-gear-fill"></i>
                 <span>Settings</span>
             </a>
