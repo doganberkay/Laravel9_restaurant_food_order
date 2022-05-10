@@ -31,17 +31,6 @@
                             <li><a href="#">Pages</a>
                                 <ul class="sub-menu">
                                     <li><a href="404.html">404 page</a>
-                                        <nav class="main-menu">
-                                        <ul >
-                                            <li><a href="404.html">404 page</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="cart.html">Cart</a></li>
-                                            <li><a href="checkout.html">Check Out</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="news.html">News</a></li>
-                                            <li><a href="shop.html">Shop</a></li>
-                                        </ul>
-                                        </nav>
                                     </li>
                                     <li><a href="about.html">About</a></li>
                                     <li><a href="cart.html">Cart</a></li>
@@ -58,20 +47,25 @@
                                 </ul>
                             </li>
                             <li><a href="contact.html">Contact</a></li>
-                            <li><a href="shop.html">Shop</a>
+
+                            <li><a href="shop">Shop</a>
                                 <ul class="sub-menu">
-                                @foreach($mainCategories as $rs)
+                                    @foreach($mainCategories as $rs)
 
 
-                                            <li><a href="news.html">{{$rs->title}}</a>
-                                                @if(count($rs->children))
+                                        <li><a href="{{route('categoryproducts',['id'=>$rs->id, 'slug'=>$rs->title])}}">
+                                                <img src="{{Storage::url($rs->image)}}" width="30" height="30" style="top: 0; left: 0;  object-fit: cover;object-position: 50% 0%;" >
+                                                 {{$rs->title}}
+                                                </a>
+                                            @if(count($rs->children))
                                                 @include('home.categorytree',['children' => $rs->children])
-                                                @endif
-                                            </li>
+                                            @endif
+                                        </li>
 
-                                @endforeach
+                                    @endforeach
                                 </ul>
                             </li>
+
                             <li>
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>

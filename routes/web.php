@@ -38,7 +38,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
-Route::get('/categoryproducts/{id}/{slug}', [HomeController::class, 'categoryproducts'])->name('categoryproducts');
+Route::get('/shop/{id}/{slug}', [HomeController::class, 'categoryproducts'])->name('categoryproducts');
 
 
 
@@ -51,7 +51,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // ************* ADMIN CATEGORY ROUTE
     Route::prefix('category')->controller(CategoryController::class)->name('category.')->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::get('/index2', 'index2')->name('index2');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
         Route::get('/edit/{id}', 'edit')->name('edit');

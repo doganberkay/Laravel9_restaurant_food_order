@@ -8,7 +8,6 @@
 
 @section('content')
 
-
     <div class="pagetitle">
         <h1>Category List</h1>
         <nav>
