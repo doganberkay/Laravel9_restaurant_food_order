@@ -1,10 +1,11 @@
 @extends('layouts.home')
 
-@section('title','Laravel9 restaurant')
-@section('description')
-    You can order food without a waitress
-@endsection
-@section('keywords','food,order,order food')
+@section('title',$setting->title)
+@section('description',$setting->description)
+@section('keywords',$setting->keyword)
+@section('icon', Storage::url($setting->icon))
+
+
 
 @section('slider')
     @include('Home._slider')

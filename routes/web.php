@@ -21,14 +21,13 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', [HomeController::class, 'index'])->name('Home');
-
 Route::redirect('/anasayfa', '/home');
 
-Route::get('/home', [HomeController::class, 'index'])->name('Home');
-Route::get('/about', [HomeController::class, 'about'])->name('About');
-Route::get('/contact', [HomeController::class, 'contact'])->name('Contact');
-Route::get('/shop', [HomeController::class, 'shop'])->name('Shop');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/references', [HomeController::class, 'references'])->name('references');
+Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
