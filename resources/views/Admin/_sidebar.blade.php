@@ -56,7 +56,7 @@
                 <span>Comments</span>
             </a>
         </li><!-- End Blank Page Nav --><li class="nav-item">
-            <a class="nav-link collapsed" href="pages-blank.html">
+            <a class="nav-link collapsed" href="{{route('admin.message.index')}}">
                 <i class="bi bi-envelope"></i>
                 <span>Messages</span>
             </a>

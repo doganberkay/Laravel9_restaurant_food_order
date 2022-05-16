@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ImageController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
@@ -26,6 +27,7 @@ Route::redirect('/anasayfa', '/home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
 Route::get('/references', [HomeController::class, 'references'])->name('references');
 Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
 
@@ -80,5 +82,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/store/{pid}', 'store')->name('store');
         Route::post('/update/{pid}/{id}','update')->name('update');
         Route::get('/delete/{pid}/{id}', 'destroy')->name('delete');
+    });
+
+    // ************ ADMIN MESSAGE ROUTES
+    Route::prefix('/message')->controller(MessageController::class)->name('message.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/delete/{id}', 'destroy')->name('delete');
     });
 });

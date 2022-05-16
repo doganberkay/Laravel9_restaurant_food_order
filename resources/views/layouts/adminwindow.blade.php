@@ -35,6 +35,7 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
+    @yield('head')
 </head>
 <body>
 <main id="mainwindow" class="main">
@@ -43,6 +44,7 @@
 </main><!-- End #main -->
 
 @include('Admin._footer')
+@yield('foot')
 
 </body>
 </html>

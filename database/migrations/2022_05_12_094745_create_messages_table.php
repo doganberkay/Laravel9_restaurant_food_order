@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id()->autoIncrement();
+            $table->string('name',50)->nullable();
+            $table->string('email',50)->nullable();
+            $table->string('phone',20)->nullable();
+            $table->string('subject',100)->nullable();
+            $table->string('message')->nullable();
+            $table->string('note',100)->nullable();
+            $table->string('ip',50)->nullable();
+            $table->string('status',5)->nullable()->default('New');
             $table->timestamps();
         });
     }

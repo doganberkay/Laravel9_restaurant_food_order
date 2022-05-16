@@ -68,7 +68,7 @@ class CategoryController extends Controller
             $data->image = $request->file('image')->store('images');
         }
         $data->save();
-        return redirect('admin/category');
+        return redirect('/admin/category');
 
 
     }
@@ -127,7 +127,7 @@ class CategoryController extends Controller
             $data->image = $request->file('image')->store('images');
         }
         $data->save();
-        return redirect('admin/category');
+        return redirect('/admin/category');
     }
 
     /**
@@ -147,7 +147,7 @@ class CategoryController extends Controller
         }
         $data->delete();
 
-        return redirect('admin/category');
+        return redirect('/admin/category');
     }
 }
 
