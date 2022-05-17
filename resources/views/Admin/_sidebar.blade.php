@@ -72,7 +72,7 @@
         <li class="nav-heading">Pages</li>
         </li><!-- End Blank Page Nav -->
         <!-- End Blank Page Nav --><li class="nav-item">
-            <a class="nav-link collapsed" href="pages-blank.html">
+            <a class="nav-link collapsed" href="{{route('admin.faq.index')}}">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q.</span>
             </a>

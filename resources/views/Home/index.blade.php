@@ -93,6 +93,42 @@
         </div>
     </div>
     <!-- end product section -->
+    <div class="product-section mt-150 mb-150">
+        <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-filters">
+                    <ul>
+                        <li class="active" data-filter="*">All</li>
+                        @foreach($sliderdata as $rs)
+                            <li data-filter=".{{$rs->id}}">{{$rs->title}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div class="row product-lists">
+
+        @foreach($sliderdata as $rs)
+            <div class="col-lg-4 col-md-6 text-center {{$rs->id}}">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="{{route('product',['id'=>$rs->id])}}">
+                            @if(is_null($rs->image))
+                                <img src="/assets/admin/img/default.jpg" >
+                            @else
+                                <img src="{{Storage::url($rs->image)}}" >
+                            @endif</a>
+                    </div>
+                    <h3>{{$rs->title}}</h3>
+                    <p class="product-price"><span>Per Portion</span> {{$rs->price}} $ </p>
+                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                </div>
+            </div>
+    @endforeach
+    </div>
+        </div>
+    </div>
 
     <!-- cart banner section -->
     <section class="cart-banner pt-100 pb-100">

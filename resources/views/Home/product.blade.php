@@ -8,7 +8,7 @@
 @section('content')
 
     <!-- breadcrumb-section -->
-    <div class="breadcrumb-section breadcrumb-bg">
+    <div class="breadcrumb-section" style="background-image: url({{Storage::url($data->image)}});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 text-center">

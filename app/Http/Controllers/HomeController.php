@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Product;
 use App\Models\Setting;
@@ -15,6 +16,10 @@ class HomeController extends Controller
         return Category::where('parent_id', '=', 0)->with('children')->get();
     }
 
+    public static function getParentId($id){
+        $data = Category::find($id);
+        return $data->parent_id;
+    }
     public function index(){
         $setting=Setting::first();
         $sliderdata = Category::limit(4)->get();
@@ -66,6 +71,14 @@ class HomeController extends Controller
             'setting'=>$setting
         ]);
     }
+    public function faq(){
+        $setting=Setting::first();
+        $datalist=Faq::all();
+        return view('home.faq',[
+            'setting'=>$setting,
+            'datalist'=>$datalist,
+        ]);
+    }
 
     public function storemessage(Request $request){
         $data = new Message();
@@ -82,8 +95,12 @@ class HomeController extends Controller
 
     public function shop(){
         $setting=Setting::first();
+        $category = Category::all();
+        $products = Product::all();
         return view('home.shop',[
-            'setting'=>$setting
+            'setting'=>$setting,
+            'category'=>$category,
+            'products'=>$products,
         ]);
     }
 

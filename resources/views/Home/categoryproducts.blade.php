@@ -10,7 +10,7 @@
 
 @section('content')
     <!-- breadcrumb-section -->
-    <div class="breadcrumb-section breadcrumb-bg">
+    <div class="breadcrumb-section" style="background-image: url({{Storage::url($category->image)}});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 text-center">
@@ -33,9 +33,9 @@
                     <div class="product-filters">
                         <ul>
                             <li class="active" data-filter="*">All</li>
-                            <li data-filter=".strawberry">Strawberry</li>
-                            <li data-filter=".berry">Berry</li>
-                            <li data-filter=".lemon">Lemon</li>
+                            @foreach($products as $rs)
+                            <li data-filter=".{{$rs->id}}">{{$rs->title}}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -43,8 +43,10 @@
 
             <div class="row product-lists">
 
+
+
                 @foreach($products as $rs)
-                <div class="col-lg-4 col-md-6 text-center strawberry">
+                <div class="col-lg-4 col-md-6 text-center {{$rs->id}}">
                     <div class="single-product-item">
                         <div class="product-image">
                             <a href="{{route('product',['id'=>$rs->id])}}">

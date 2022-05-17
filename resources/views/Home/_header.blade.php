@@ -1,6 +1,8 @@
 
 
-<!-- header -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <div class="top-header-area" id="sticker">
     <div class="container" >
         <div class="row">
@@ -19,14 +21,23 @@
 
 
                     <!-- menu start -->
+
                     <nav class="main-menu">
                         <ul>
                             <li class="current-list-item"><a href="{{route('home')}}">Home</a>
                             </li>
-                            <li><a href="{{route('about')}}">About</a></li>
+                            <li><a href="{{route('about')}}">About Us</a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{route('references')}}">References</a></li>
+                                    <li><a href="{{route('contact')}}">Contact</a></li>
+                                    <li><a href="{{route('faq')}}">F.A.Q</a></li>
+                                </ul>
+                            </li>
                             <li><a href="{{route('references')}}">References</a>
                             </li>
                             <li><a href="{{route('contact')}}">Contact</a></li>
+                            <li><a href="{{route('faq')}}">F.A.Q</a></li>
+
                             <li><a href="{{route('shop')}}">Shop</a>
                                 <ul class="sub-menu">
                                     @foreach($mainCategories as $rs)
