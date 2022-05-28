@@ -57,6 +57,7 @@
                                 @endif</a>
                         </div>
                         <h3>{{$rs->title}}</h3>
+
                         <p class="product-price"><span>Per Portion</span> {{$rs->price}} $ </p>
                         <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                     </div>

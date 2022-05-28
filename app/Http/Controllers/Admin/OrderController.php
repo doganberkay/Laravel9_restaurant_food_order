@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Faq;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class FaqController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $data= Faq::all();
+        $data= Order::all();
 
-        return view('admin.faq.index',[
+        return view('admin.order.index',[
             'data' => $data
         ]);
     }
@@ -29,10 +29,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        $data= Faq::all();
-        return view('admin.faq.create',[
-            'data' => $data
-        ]);
+        //
     }
 
     /**
@@ -43,12 +40,7 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        $data= new Faq();
-        $data->question = $request->question;
-        $data->answer = $request->answer;
-        $data->status = $request->status;
-        $data->save();
-        return redirect(route('admin.faq.index'));
+        //
     }
 
     /**
@@ -82,7 +74,7 @@ class FaqController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -93,8 +85,6 @@ class FaqController extends Controller
      */
     public function destroy($id)
     {
-        $data= Faq::find($id);
-        $data->delete();
-        return redirect(route('admin.faq.index'));
+        //
     }
 }

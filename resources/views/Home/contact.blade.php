@@ -23,7 +23,9 @@
 
 <!-- contact form -->
 <div class="contact-from-section mt-150 mb-150">
+
     <div class="container">
+        {!! $setting->contact !!}
         <div class="row">
 
             <div class="col-lg-8 mb-5 mb-lg-0">

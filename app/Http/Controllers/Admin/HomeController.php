@@ -14,6 +14,7 @@ class HomeController extends Controller
         return view('admin.index');
     }
 
+
     public function setting(){
         $data=Setting::first();
         if ($data==null)

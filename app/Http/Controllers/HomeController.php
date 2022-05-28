@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Product;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -33,12 +35,13 @@ class HomeController extends Controller
 
     public function product($id){
 
-
+        $comments = Comment::where('product_id',$id)->where('status','True')->get();
         $data = Product::find($id);
         $images = DB::table('images')->where('product_id', $id)->get();
         return view('home.product',[
             'data'=>$data,
-            'images'=>$images
+            'images'=>$images,
+            'comments'=>$comments
         ]);
     }
 
@@ -52,7 +55,6 @@ class HomeController extends Controller
         ]);
     }
 
-
     public function about(){
         $setting=Setting::first();
         return view('home.about',[
@@ -65,6 +67,14 @@ class HomeController extends Controller
             'setting'=>$setting
         ]);
     }
+
+    public function login1(){
+        $setting=Setting::first();
+        return view('home.login',[
+            'setting'=>$setting
+        ]);
+    }
+
     public function contact(){
         $setting=Setting::first();
         return view('home.contact',[
@@ -92,6 +102,18 @@ class HomeController extends Controller
 
         return redirect()->route('contact')->with('info', 'Your message has been sent. Thank You!');
     }
+    public function storecomment(Request $request){
+        $data = new Comment();
+        $data->user_id = Auth::id();
+        $data->product_id = $request->input('product_id');
+        $data->subject = $request->input('subject');
+        $data->rate = $request->input('rate');
+        $data->review = $request->input('review');
+        $data->ip = request()->ip();
+        $data->save();
+
+        return redirect()->route('product',['id'=>$request->input('product_id')])->with('success', 'Your comment has been sent. Thank You!');
+    }
 
     public function shop(){
         $setting=Setting::first();
@@ -104,5 +126,39 @@ class HomeController extends Controller
         ]);
     }
 
+
+    public function logout(Request $request){
+
+        Auth::logout();
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+    public function loginadmincheck(Request $request)
+    {
+        // dd($request);
+        $messages = [
+            'email.required' => 'Email is required!',
+            'password.required' => 'Password is required!'
+        ];
+
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ],$messages);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/admin');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
 
 }

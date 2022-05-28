@@ -57,6 +57,11 @@
         </div>
     </div>
     <!-- end features list section -->
+    @if (session('status'))
+        <div class="mb-4 font-medium text-sm text-green-600">
+            {{ session('status') }}
+        </div>
+    @endif
 
     <!-- product section -->
     <div class="product-section mt-150 mb-150">
@@ -342,4 +347,8 @@
         </div>
     </div>
     <!-- end logo carousel -->
+
+
 @endsection
+
+

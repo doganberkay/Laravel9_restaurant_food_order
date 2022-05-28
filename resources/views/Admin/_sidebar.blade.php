@@ -51,7 +51,7 @@
                 <span>Products</span>
             </a>
         </li><!-- End Blank Page Nav --><li class="nav-item">
-            <a class="nav-link collapsed" href="pages-blank.html">
+            <a class="nav-link collapsed" href="{{route('admin.comment.index')}}">
                 <i class="bi bi-menu-button"></i>
                 <span>Comments</span>
             </a>
@@ -62,7 +62,7 @@
             </a>
 
         <!-- End Blank Page Nav --><li class="nav-item">
-            <a class="nav-link collapsed" href="pages-blank.html">
+            <a class="nav-link collapsed" href="{{route('admin.user.index')}}">
                 <i class="bi bi-person"></i>
                 <span>Users</span>
             </a>

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Faq;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class FaqController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $data= Faq::all();
+        $data= Comment::all();
 
-        return view('admin.faq.index',[
+        return view('admin.comment.index',[
             'data' => $data
         ]);
     }
@@ -29,10 +29,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        $data= Faq::all();
-        return view('admin.faq.create',[
-            'data' => $data
-        ]);
+        //
     }
 
     /**
@@ -43,12 +40,7 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        $data= new Faq();
-        $data->question = $request->question;
-        $data->answer = $request->answer;
-        $data->status = $request->status;
-        $data->save();
-        return redirect(route('admin.faq.index'));
+        //
     }
 
     /**
@@ -59,7 +51,10 @@ class FaqController extends Controller
      */
     public function show($id)
     {
-        //
+        $data= Comment::find($id);
+        return view('admin.comment.show',[
+            'data' => $data
+        ]);
     }
 
     /**
@@ -82,7 +77,11 @@ class FaqController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $data= Comment::find($id);
+        $data->status = $request->status;
+        $data->save();
+        return redirect(route('admin.comment.show',['id'=>$id]));
     }
 
     /**
@@ -93,8 +92,6 @@ class FaqController extends Controller
      */
     public function destroy($id)
     {
-        $data= Faq::find($id);
-        $data->delete();
-        return redirect(route('admin.faq.index'));
+        //
     }
 }

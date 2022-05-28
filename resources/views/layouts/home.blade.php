@@ -36,6 +36,7 @@
 
 </head>
 <body>
+@include('Home._login')
     @include('Home._header')
 
     @section('slider')

@@ -19,7 +19,6 @@
                         $mainCategories = \App\Http\Controllers\HomeController::maincategorylist()
                     @endphp
 
-
                     <!-- menu start -->
 
                     <nav class="main-menu">
@@ -54,13 +53,28 @@
                                     @endforeach
                                 </ul>
                             </li>
-
-                            <li>
-                                <div class="header-icons">
+                                    <li>
+                                        @auth
+                                            <a  href="/login"><i class="fas fa-user"></i> {{Auth::user()->name}} </a>
+                                        @endauth
+                                        @guest
+                                        <a  href="/login"><i class="fas fa-user"></i> Username </a>
+                                            @endguest
+                                        <ul class="sub-menu">
+                                            <li><a href="" > My Account </a></li>
+                                            <li><a href=""> Cart </a></li>
+                                            @guest
+                                            <li><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();" > Login </a></li>
+                                            <li><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();"> Register </a></li>
+                                            @endguest
+                                            @auth
+                                            <li><a href="/logoutuser"> Logout </a></li>
+                                            @endauth
+                                        </ul>
                                     <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                                </div>
-                            </li>
+                                    </li>
                         </ul>
 
                     </nav>

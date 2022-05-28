@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Faq;
+use App\Models\Role;
+use App\Models\RoleUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class FaqController extends Controller
+class AdminUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,9 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $data= Faq::all();
+        $data= User::all();
 
-        return view('admin.faq.index',[
+        return view('admin.user.index',[
             'data' => $data
         ]);
     }
@@ -29,10 +31,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        $data= Faq::all();
-        return view('admin.faq.create',[
-            'data' => $data
-        ]);
+        //
     }
 
     /**
@@ -43,12 +42,7 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        $data= new Faq();
-        $data->question = $request->question;
-        $data->answer = $request->answer;
-        $data->status = $request->status;
-        $data->save();
-        return redirect(route('admin.faq.index'));
+        //
     }
 
     /**
@@ -59,7 +53,29 @@ class FaqController extends Controller
      */
     public function show($id)
     {
-        //
+        $data= User::find($id);
+        $roles = Role::all();
+        return view('admin.user.show',[
+            'data' => $data,
+            'roles' => $roles
+        ]);
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function addrole(Request $request, $id)
+    {
+        $data= new RoleUser();
+        $data->user_id = $id;
+        $data->role_id = $request->role_id;
+        $data->save();
+        return redirect(route('admin.user.show',['id'=>$id]));
     }
 
     /**
@@ -93,8 +109,21 @@ class FaqController extends Controller
      */
     public function destroy($id)
     {
-        $data= Faq::find($id);
-        $data->delete();
-        return redirect(route('admin.faq.index'));
+        //
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $uid
+     * @return \Illuminate\Http\Response
+     */
+    public function deleterole($uid,$rid)
+    {
+        $user= User::find($uid);
+        $user->roles()->detach($rid);
+        return redirect(route('admin.user.show',['id'=>$uid]));
+    }
+
+
 }
