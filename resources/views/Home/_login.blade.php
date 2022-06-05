@@ -8,11 +8,6 @@
             <div class="modal-body">
                 <div class="box">
                     <div class="content">
-                        <div class="division">
-                            <div class="line l"></div>
-                            <span>or</span>
-                            <div class="line r"></div>
-                        </div>
                         <div class="error"></div>
                         <div class="form loginBox">
 

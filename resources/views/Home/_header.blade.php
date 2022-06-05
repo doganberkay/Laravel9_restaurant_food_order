@@ -15,11 +15,11 @@
                         </a>
                     </div>
                     <!-- logo -->
-                    @php
-                        $mainCategories = \App\Http\Controllers\HomeController::maincategorylist()
-                    @endphp
+                @php
+                    $mainCategories = \App\Http\Controllers\HomeController::maincategorylist()
+                @endphp
 
-                    <!-- menu start -->
+                <!-- menu start -->
 
                     <nav class="main-menu">
                         <ul>
@@ -43,8 +43,8 @@
 
 
                                         <li><a href="{{route('categoryproducts',['id'=>$rs->id, 'slug'=>$rs->title])}}">
-                                                 {{$rs->title}}
-                                                </a>
+                                                {{$rs->title}}
+                                            </a>
                                             @if(count($rs->children))
                                                 @include('home.categorytree',['children' => $rs->children])
                                             @endif
@@ -53,28 +53,31 @@
                                     @endforeach
                                 </ul>
                             </li>
-                                    <li>
-                                        @auth
-                                            <a  href="/login"><i class="fas fa-user"></i> {{Auth::user()->name}} </a>
-                                        @endauth
-                                        @guest
-                                        <a  href="/login"><i class="fas fa-user"></i> Username </a>
-                                            @endguest
-                                        <ul class="sub-menu">
-                                            <li><a href="" > My Account </a></li>
-                                            <li><a href=""> Cart </a></li>
-                                            @guest
-                                            <li><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();" > Login </a></li>
-                                            <li><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();"> Register </a></li>
-                                            @endguest
-                                            @auth
-                                            <li><a href="/logoutuser"> Logout </a></li>
-                                            @endauth
-                                        </ul>
-                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                            <li>
+                                @auth
+                                    <a  href="{{route('userpanel.index')}}"><i class="fas fa-user"></i> {{Auth::user()->name}} </a>
+                                @endauth
+                                @guest
+                                    <a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();" > Username </a>
+                                @endguest
+                                <ul class="sub-menu">
+                                    @guest
+                                        <li><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();" > Login </a></li>
+                                        <li><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();"> Register </a></li>
+                                    @endguest
+                                    @auth
+                                        <li><a class="nav-link text-dark" href="{{route('userpanel.index')}}"><i class="fa fa-user"></i> My Profile</a></li>
+                                        <li><a class="nav-link text-dark" href="shop.html"><i class="fa fa-heart"></i> My Orders</a></li>
+                                        <li><a class="nav-link text-dark" href="{{route('userpanel.reviews')}}"><i class="fa fa-exchange-alt"></i> My Reviews</a></li>
+                                        <li><a class="nav-link text-dark" href="shop.html"><i class="fa fa-check"></i> Checkout</a></li>
+                                        <li><a class="nav-link text-dark" href="shop.html"><i class="fa fa-unlock-alt"></i> My Products</a></li>
+                                        <li><a class="nav-link text-dark" href="/logoutuser"><i class="fa fa-user-plus"></i> Logout</a></li>
+                                    @endauth
+                                </ul>
+                                <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
 
-                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                                    </li>
+                                <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                            </li>
                         </ul>
 
                     </nav>

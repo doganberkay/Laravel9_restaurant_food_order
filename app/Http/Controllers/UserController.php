@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class CommentController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,15 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $data= Comment::all();
+        return view('home.user.index');
+    }
 
-        return view('admin.comment.index',[
-            'data' => $data
+
+
+    public function reviews(){
+        $reviews=Comment::where('user_id','=',Auth::id())->get();
+        return view('home.user.comments',[
+            'reviews'=>$reviews
         ]);
     }
 
@@ -51,10 +56,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        $data= Comment::find($id);
-        return view('admin.comment.show',[
-            'data' => $data
-        ]);
+        //
     }
 
     /**
@@ -77,11 +79,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $data= Comment::find($id);
-        $data->status = $request->status;
-        $data->save();
-        return redirect(route('admin.comment.show',['id'=>$id]));
+        //
     }
 
     /**
@@ -95,6 +93,6 @@ class CommentController extends Controller
         $data= Comment::find($id);
         $data->delete();
 
-        return redirect(route('admin.comment'));
+        return redirect(route('userpanel.reviews'));
     }
 }

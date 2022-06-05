@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +50,18 @@ Route::get('/logoutuser', [HomeController::class, 'logout'])->name('logout');
 
 Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
 Route::get('/shop/{id}/{slug}', [HomeController::class, 'categoryproducts'])->name('categoryproducts');
+
+/*-------------------------------------------------------------------------
+| User Routes
+|-------------------------------------------------------------------------- */
+Route::middleware('auth')->group(function (){
+    Route::prefix('userpanel')->name('userpanel.')->controller(UserController::class)->group(function () {
+        Route::get('/',  'index')->name('index');
+        Route::get('/reviews',  'reviews')->name('reviews');
+        Route::get('/reviewdelete/{id}', 'reviewdelete')->name('reviewdelete');
+
+    });
+});
 
 
 
