@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 text-center">
                     <div class="breadcrumb-text">
-                        <h1>About Us</h1>
+                        <h1>Complete Order</h1>
                     </div>
                 </div>
             </div>

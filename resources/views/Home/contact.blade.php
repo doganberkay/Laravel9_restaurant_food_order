@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title',$setting->title)
+@section('title','Contact | ' .$setting->title)
 @section('description',$setting->description)
 @section('keywords',$setting->keyword)
 @section('icon', Storage::url($setting->icon))

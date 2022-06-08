@@ -24,8 +24,8 @@ class HomeController extends Controller
     }
     public function index(){
         $setting=Setting::first();
-        $sliderdata = Category::limit(4)->get();
-        $productlist1 = Product::limit(6)->get();
+        $sliderdata = Category::limit(6)->get();
+        $productlist1 = Product::limit(12)->get();
         return view('home.index',[
             'setting'=>$setting,
             'sliderdata'=>$sliderdata,
@@ -35,11 +35,13 @@ class HomeController extends Controller
 
     public function product($id){
 
+        $setting=Setting::first();
         $comments = Comment::where('product_id',$id)->where('status','True')->get();
         $data = Product::find($id);
         $images = DB::table('images')->where('product_id', $id)->get();
         return view('home.product',[
             'data'=>$data,
+            'setting'=>$setting,
             'images'=>$images,
             'comments'=>$comments
         ]);

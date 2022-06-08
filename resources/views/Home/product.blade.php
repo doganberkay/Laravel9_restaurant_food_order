@@ -1,8 +1,9 @@
 @extends('layouts.home')
 
-@section('title',$data->title)
+@section('title',$data->title ." | ".$setting->title)
 
 @section('keywords','food,order,order food')
+@section('icon', Storage::url($setting->icon))
 
 
 @section('content')
@@ -57,21 +58,24 @@
 
                 </div>
                 <div class="col-md-7">
+                    @include('home.messages')
                     <div class="single-product-content">
                         <h3>{{$data->title}}</h3>
                         <p class="single-product-pricing"><span>Per Kg</span> ${{$data->price}}</p>
                         @php
-                        $average = $data->comment->average('rate')
+                            $average = $data->comment->average('rate')
                         @endphp
                         <i class="fa fa-star"></i>
-                         {{number_format($average,1)}} / {{$data->comment->count('id')}} Reviews
+                        {{number_format($average,1)}} / {{$data->comment->count('id')}} Reviews
 
                         <p>{{$data->description}}</p>
                         <div class="single-product-form">
-                            <form action="index.html">
-                                <input type="number" placeholder="0">
+                            <form action="{{route('shopcart.store')}}" method="post">
+                                @csrf
+                                <input type="number" name="quantity" value="1" min="1" max="{{$data->quantity}}">
+                                <input type="hidden" name="id" value="{{$data->id}}">
+                                <button class="cart-btnn" type="submit"> <i class="fas fa-shopping-cart"></i> Add to Cart</button>
                             </form>
-                            <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                             <p><strong>Categories: </strong>{{$data->category->title}}</p>
                         </div>
                         <h4>Share:</h4>
@@ -110,7 +114,7 @@
                     @endforeach
                 </div>
             </div>
-            @include('home.messages')
+
             <div class="comment-template">
                 <h4>Leave a comment</h4>
                 <p>If you have a comment dont feel hesitate to send us your opinion.</p>
@@ -238,5 +242,32 @@
 
 
         /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+        .cart-btnn{
+            font-family: 'Poppins', sans-serif;
+            display: inline-block;
+            background-color: #F28123;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        .cart-btnn {
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+        }
+        .cart-btnn i {
+            margin-right: 5px;
+        }
+        .single-product-form a.cart-btnn {
+            margin-bottom: 15px;
+        }
+        .cart-btnn {
+            border-radius: 50px;
+        }
+
+        .cart-btnn:hover {
+            background-color: #051922;
+            color: #F28123;
+        }
+
     </style>
 @endsection

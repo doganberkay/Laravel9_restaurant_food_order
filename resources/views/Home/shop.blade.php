@@ -1,6 +1,9 @@
 @extends('layouts.home')
 
-@section('title','Laravel9 restaurant Shop page')
+@section('title','Shop | ' .$setting->title)
+@section('description',$setting->description)
+@section('keywords',$setting->keyword)
+@section('icon', Storage::url($setting->icon))
 
 @section('content')
     <!-- breadcrumb-section -->
@@ -49,7 +52,7 @@
                                 <h3>{{$rs->title}}</h3>
                                 <p class="product-price"><span>{{$rs->category->title}}</span>  </p>
                                 <p class="product-price"><span>Per Portion {{$parent}}</span> {{$rs->price}} $ </p>
-                                <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                                <a href="{{route('shopcart.add',['id'=>$rs->id])}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                             </div>
                         </div>
                 @endforeach

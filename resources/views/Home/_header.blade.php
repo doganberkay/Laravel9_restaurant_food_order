@@ -74,7 +74,7 @@
                                         <li><a class="nav-link text-dark" href="/logoutuser"><i class="fa fa-user-plus"></i> Logout</a></li>
                                     @endauth
                                 </ul>
-                                <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                <a class="shopping-cart" href="{{route('shopcart.index')}}"><i class="fas fa-shopping-cart"></i> {{\App\Http\Controllers\ShopCartController::countshopcart()}}</a>
 
                                 <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                             </li>

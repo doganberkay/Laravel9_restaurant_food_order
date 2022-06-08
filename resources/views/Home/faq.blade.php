@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title','Frequently Asked Questions'.$setting->title)
+@section('title','F.A.Q. | '.$setting->title)
 @section('description',$setting->description)
 @section('keywords',$setting->keyword)
 @section('icon', Storage::url($setting->icon))

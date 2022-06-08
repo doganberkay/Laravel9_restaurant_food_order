@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopCartController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +61,20 @@ Route::middleware('auth')->group(function (){
         Route::get('/reviews',  'reviews')->name('reviews');
         Route::get('/reviewdelete/{id}', 'reviewdelete')->name('reviewdelete');
 
+    });
+
+    // ************* SHOPCART ROUTES
+    Route::prefix('/shopcart')->controller(ShopCartController::class)->name('shopcart.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/add/{id}', 'add')->name('add');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::get('/delete/{id}', 'destroy')->name('delete');
+        Route::post('/order', 'order')->name('order');
+        Route::post('/storeorder', 'storeorder')->name('storeorder');
+        Route::get('/ordercomplete', 'ordercomplete')->name('ordercomplete');
     });
 });
 
