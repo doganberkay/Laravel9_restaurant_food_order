@@ -19,23 +19,28 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="forms-elements.html">
+                    <a href="{{@route('admin.order.index',['slug'=>'New'])}}">
                         <i class="bi bi-circle"></i><span>New Orders</span>
                     </a>
                 </li>
                 <li>
-                    <a href="forms-layouts.html">
+                    <a href="{{@route('admin.order.index',['slug'=>'Accepted'])}}">
                         <i class="bi bi-circle"></i><span>Accepted Orders</span>
                     </a>
                 </li>
                 <li>
-                    <a href="forms-editors.html">
-                        <i class="bi bi-circle"></i><span>Shipping Orders</span>
+                    <a href="{{@route('admin.order.index',['slug'=>'Shipped'])}}">
+                        <i class="bi bi-circle"></i><span>Shipped Orders</span>
                     </a>
                 </li>
                 <li>
-                    <a href="forms-validation.html">
+                    <a href="{{@route('admin.order.index',['slug'=>'Completed'])}}">
                         <i class="bi bi-circle"></i><span>Completed Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{@route('admin.order.index',['slug'=>'Cancelled'])}}">
+                        <i class="bi bi-circle"></i><span>Cancelled Orders</span>
                     </a>
                 </li>
             </ul>

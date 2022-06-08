@@ -60,6 +60,10 @@ Route::middleware('auth')->group(function (){
         Route::get('/',  'index')->name('index');
         Route::get('/reviews',  'reviews')->name('reviews');
         Route::get('/reviewdelete/{id}', 'reviewdelete')->name('reviewdelete');
+        Route::get('/orders',  'orders')->name('orders');
+        Route::get('/orderdetail/{id}',  'orderdetail')->name('orderdetail');
+
+        Route::get('/cancelproduct/{id}', 'cancelproduct')->name('cancelproduct');
 
     });
 
@@ -162,15 +166,19 @@ Route::middleware('auth')->group(function (){
         });
 
 
-        // ************ ADMIN USER ROUTES
+        // ************ ADMIN ORDER ROUTES
         Route::prefix('/order')->controller(\App\Http\Controllers\Admin\OrderController::class)->name('order.')->group(function () {
-            Route::get('/', 'index')->name('index');
+            Route::get('/{slug}', 'index')->name('index');
             Route::get('/edit/{id}', 'show')->name('edit');
             Route::get('/show/{id}', 'show')->name('show');
             Route::post('/update/{id}', 'update')->name('update');
             Route::get('/delete/{id}', 'destroy')->name('delete');
-            Route::post('/addrole/{id}', 'addrole')->name('addrole');
-            Route::get('/deleterole/{uid}/{rid}', 'deleterole')->name('deleterole');
+            Route::get('/cancelorder/{id}', 'cancelorder')->name('cancelorder');
+            Route::get('/cancelproduct/{id}', 'cancelproduct')->name('cancelproduct');
+            Route::get('/acceptproduct/{id}', 'acceptproduct')->name('acceptproduct');
+
         });
+
+
     });
 

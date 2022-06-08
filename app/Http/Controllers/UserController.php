@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\Echo_;
 
 class UserController extends Controller
 {
@@ -27,6 +30,30 @@ class UserController extends Controller
         ]);
     }
 
+    public function orders(){
+        $data=Order::where('user_id','=',Auth::id())->get();
+        return view('home.user.orders',[
+            'data'=>$data
+        ]);
+    }
+    public function orderdetail($id){
+        $order = Order::find($id);
+        $orderproduct= OrderProduct::where('order_id','=',$id)->get();
+
+        return view('Home.user.orderdetail',[
+            'order'=>$order,
+            'orderproduct'=>$orderproduct,
+        ]);
+    }
+
+    public function cancelproduct($id)
+    {
+
+        $data= OrderProduct::find($id);
+        $data->status = 'Cancelled';
+        $data->save();
+        return redirect()->back();
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -61,11 +61,11 @@
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample" style="">
                                     <div class="card-body">
                                         <div class="sbilling-address-form">
-
-                                            <p><input class="form-control" type="tel " name="" placeholder="Card Holder" ></p>
-                                            <p><input class="form-control" type="number" name="" placeholder="Card Number"></p>
-                                            <p><input class="form-control" type="text" name="" placeholder="Exp. Date" ></p>
-                                            <p><input class="form-control" type="text" name="" placeholder="Security Code" ></p>
+                                            <p><input class="form-control" type="hidden" name="total" value="{{$total}}"></p>
+                                            <p><input class="form-control" type="tel" name="holder" placeholder="Card Holder" ></p>
+                                            <p><input class="form-control" type="number" name="number" placeholder="Card Number"></p>
+                                            <p><input class="form-control" type="text" name="date" placeholder="Exp. Date" ></p>
+                                            <p><input class="form-control" type="text" name="code" placeholder="Security Code" ></p>
                                         </div>
                                     </div>
                                 </div>

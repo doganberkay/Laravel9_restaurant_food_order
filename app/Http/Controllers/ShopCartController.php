@@ -128,7 +128,7 @@ class ShopCartController extends Controller
 
     public function ordercomplete()
     {
-        return view('Home.user.ordercomplete');
+        return view('Home.ordercomplete');
     }
 
 
