@@ -97,9 +97,7 @@ class ShopCartController extends Controller
 
             $data = new Order();
             $data->name = $request->input('name');
-            $data->address = $request->input('address');
-            $data->email = $request->input('email');
-            $data->phone = $request->input('phone');
+            $data->tableno = $request->input('tableno');
             $data->total = $request->input('total');
             $data->user_id = Auth::id();
             $data->IP = $_SERVER['REMOTE_ADDR'];

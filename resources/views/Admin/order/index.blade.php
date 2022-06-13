@@ -31,11 +31,8 @@
                         <table class="table table-hover">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">User</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Address</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Table No</th>
                                 <th scope="col">Amount</th>
                                 <th scope="col">Status</th>
                                 <th style="text-align: center;" scope="col">Show</th>
@@ -47,10 +44,7 @@
                             <tr>
                                 <th scope="row">{{$rs->id}}</th>
                                 <td><a href="{{route('admin.user.show',['id'=>$rs->user_id])}}" onclick="return !window.open(this.href, '','top=50 left=100 width=1100,height=700')">{{$rs->user->name}}</a></td>
-                                <td> {{$rs->name}}</td>
-                                <td>{{$rs->phone}}</td>
-                                <td>{{$rs->email}}</td>
-                                <td>{{$rs->address}}</td>
+                                <td>{{$rs->tableno}}</td>
                                 <td>$ {{$rs->total}}</td>
                                 <td>{{$rs->status}}</td>
                                 <td style="text-align: center;"><a href="{{route('admin.order.show', ['id'=>$rs->id])}} " onclick="return !window.open(this.href, '','top=50 left=100 width=1100,height=700')" class="btn btn-outline-info"><i class="bi bi-info-circle"></i> Show</a></td>

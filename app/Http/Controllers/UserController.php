@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Echo_;
@@ -18,7 +19,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('home.user.index');
+        $setting=Setting::first();
+        return view('home.user.index',[
+        'setting'=>$setting,
+        ]);
     }
 
 

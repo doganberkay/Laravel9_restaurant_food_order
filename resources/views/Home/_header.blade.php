@@ -26,11 +26,6 @@
                             <li class="current-list-item"><a href="{{route('home')}}">Home</a>
                             </li>
                             <li><a href="{{route('about')}}">About Us</a>
-                                <ul class="sub-menu">
-                                    <li><a href="{{route('references')}}">References</a></li>
-                                    <li><a href="{{route('contact')}}">Contact</a></li>
-                                    <li><a href="{{route('faq')}}">F.A.Q</a></li>
-                                </ul>
                             </li>
                             <li><a href="{{route('references')}}">References</a>
                             </li>
@@ -70,7 +65,6 @@
                                         <li><a class="nav-link text-dark" href="{{route('userpanel.orders')}}"><i class="fa fa-heart"></i> My Orders</a></li>
                                         <li><a class="nav-link text-dark" href="{{route('userpanel.reviews')}}"><i class="fa fa-exchange-alt"></i> My Reviews</a></li>
                                         <li><a class="nav-link text-dark" href="shop.html"><i class="fa fa-check"></i> Checkout</a></li>
-                                        <li><a class="nav-link text-dark" href="shop.html"><i class="fa fa-unlock-alt"></i> My Products</a></li>
                                         <li><a class="nav-link text-dark" href="/logoutuser"><i class="fa fa-user-plus"></i> Logout</a></li>
                                     @endauth
                                 </ul>

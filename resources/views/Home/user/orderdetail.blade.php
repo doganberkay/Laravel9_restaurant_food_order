@@ -41,16 +41,8 @@
                                             <td>{{$order->name}}</td>
                                         </tr>
                                         <tr>
-                                            <th scope="col">Phone :</th>
-                                            <td>{{$order->phone}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Email :</th>
-                                            <td>{{$order->email}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Address :</th>
-                                            <td>{{$order->address}}</td>
+                                            <th scope="col">Table No :</th>
+                                            <td>{{$order->tableno}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="col">Note :</th>

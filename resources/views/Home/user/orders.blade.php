@@ -37,9 +37,7 @@
                                     <tr >
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Phone</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Address</th>
+                                        <th scope="col">Table No</th>
                                         <th scope="col">Status</th>
                                         <th style="text-align: center;" cope="col">Cancel</th>
                                     </tr>
@@ -49,9 +47,7 @@
                                         <tr>
                                             <th scope="row">{{$rs->id}}</th>
                                             <td>{{$rs->name}}</td>
-                                            <td>{{$rs->phone}}</td>
-                                            <td>{{$rs->email}}</td>
-                                            <td>{{$rs->address}}</td>
+                                            <td>{{$rs->tableno}}</td>
                                             <td>{{$rs->status}}</td>
                                             <td style="text-align: center;"><a href="{{route('userpanel.orderdetail', ['id'=>$rs->id])}}" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Show Detail</a> </td>
                                         </tr>

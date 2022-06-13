@@ -12,7 +12,7 @@
                             <h1>{{$rs->title}}</h1>
                             <div class="hero-btns">
                                 <a href="{{route('categoryproducts',['id'=>$rs->id, 'slug'=>$rs->title])}}" class="boxed-btn">Visit Shop</a>
-                                <a href="contact.html" class="bordered-btn">Contact Us</a>
+                                <a href="{{route('contact')}}" class="bordered-btn">Contact Us</a>
                             </div>
                         </div>
                     </div>

@@ -17,9 +17,7 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->integer('user_id');
             $table->string('name',20);
-            $table->string('email',50);
-            $table->string('address',200);
-            $table->string('phone',20);
+            $table->string('tableno',50);
             $table->float('total');
             $table->string('note',150)->nullable();
             $table->string('IP',20);

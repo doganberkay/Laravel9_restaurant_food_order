@@ -47,24 +47,12 @@
                                 <td>{{$data->id}}</td>
                             </tr>
                             <tr>
-                                <th scope="row">Name</th>
-                                <td>{{$data->user->name}}</td>
-                            </tr>
-                            <tr>
                                 <th scope="row">Username</th>
                                 <td>{{$data->user->name}}</td>
                             </tr>
                             <tr>
-                                <th scope="row">Phone</th>
-                                <td>{{$data->phone}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Email</th>
-                                <td>{{$data->email}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Address</th>
-                                <td>{{$data->address}}</td>
+                                <th scope="row">Table No</th>
+                                <td>{{$data->tableno}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Status</th>
@@ -96,7 +84,6 @@
                                         <br>
                                         <select  name="status" value="{{$data->status}}" aria-label="Default select example">
                                             <option >Accepted</option>
-                                            <option >Shipped</option>
                                             <option >Cancelled</option>
                                             <option >Completed</option>
                                         </select>

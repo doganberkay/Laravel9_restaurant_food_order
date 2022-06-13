@@ -29,11 +29,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{@route('admin.order.index',['slug'=>'Shipped'])}}">
-                        <i class="bi bi-circle"></i><span>Shipped Orders</span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{@route('admin.order.index',['slug'=>'Completed'])}}">
                         <i class="bi bi-circle"></i><span>Completed Orders</span>
                     </a>
